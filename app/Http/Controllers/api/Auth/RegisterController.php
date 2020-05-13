@@ -1,13 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\api\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Tymon\JWTAuth\JWTAuth;
 
 class RegisterController extends Controller
 {
@@ -29,16 +34,43 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '';
+    protected $auth;
 
     /**
      * Create a new controller instance.
      *
-     * @return void
+     * @param JWTAuth $auth
      */
-    public function __construct()
+    public function __construct(JWTAuth $auth)
     {
-        $this->middleware('guest');
+        $this->auth = $auth;
+    }
+
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function register(Request $request)
+    {
+        $validator = $this->validator($request->all());
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'errors' => $validator->errors(),
+            ], 200);
+        }
+
+        $user = $this->create($request->all());
+        $token = $this->auth->attempt($request->only('email', 'password'));
+
+        return response()->json([
+            'success' => true,
+            'data' => $user,
+            'token' => $token
+        ], 200);
     }
 
     /**
@@ -52,7 +84,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:8'],
         ]);
     }
 
