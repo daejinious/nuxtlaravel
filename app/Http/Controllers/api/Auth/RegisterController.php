@@ -60,7 +60,7 @@ class RegisterController extends Controller
             return response()->json([
                 'success' => false,
                 'errors' => $validator->errors(),
-            ], 200);
+            ], 422);
         }
 
         $user = $this->create($request->all());

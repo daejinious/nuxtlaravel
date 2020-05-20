@@ -17,7 +17,7 @@
               <nuxt-link class="nav-link" to="/login">Login</nuxt-link>
             </li>
             <li class="nav-item">
-              <nuxt-link class="nav-link" to="/register">Register</nuxt-link>
+              <nuxt-link class="nav-link" to="/auth/register">Register</nuxt-link>
             </li>
           </b-navbar-nav>
         </b-collapse>
