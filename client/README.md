@@ -1,6 +1,6 @@
 # jwt-auth
 
-> My epic Nuxt.js project
+> My fine Nuxt.js project
 
 ## Build Setup
 

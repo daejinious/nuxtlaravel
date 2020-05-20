@@ -1,3 +1,4 @@
+
 export default {
   mode: 'universal',
   /*
@@ -21,12 +22,13 @@ export default {
   /*
   ** Global CSS
   */
-  css: [],
+  css: [
+  ],
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: [],
-
+  plugins: [
+  ],
   auth: {
     // Doc: https://auth.nuxtjs.org/guide/scheme.html
     strategies: {
@@ -54,7 +56,8 @@ export default {
   /*
   ** Nuxt.js dev-modules
   */
-  buildModules: [],
+  buildModules: [
+  ],
   /*
   ** Nuxt.js modules
   */
@@ -81,7 +84,7 @@ export default {
     ** You can extend webpack config here
     */
     extractCSS: true,
-    extend(config, ctx) {
+    extend (config, ctx) {
     }
   }
 }
