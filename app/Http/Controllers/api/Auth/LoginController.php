@@ -50,7 +50,6 @@ class LoginController extends Controller
      * @param Request $request
      * @return RedirectResponse|Response|JsonResponse
      *
-     * @throws \Illuminate\Validation\ValidationException
      */
     public function login(Request $request)
     {

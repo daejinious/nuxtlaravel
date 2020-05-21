@@ -14,7 +14,7 @@
 
           <b-navbar-nav class="ml-auto">
             <li class="nav-item">
-              <nuxt-link class="nav-link" to="/login">Login</nuxt-link>
+              <nuxt-link class="nav-link" to="/auth/login">Login</nuxt-link>
             </li>
             <li class="nav-item">
               <nuxt-link class="nav-link" to="/auth/register">Register</nuxt-link>

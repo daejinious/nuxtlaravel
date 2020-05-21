@@ -13,6 +13,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Tymon\JWTAuth\JWTAuth;
+use Log;
 
 class RegisterController extends Controller
 {
@@ -55,6 +56,7 @@ class RegisterController extends Controller
      */
     public function register(Request $request)
     {
+        Log::info("register start!!!");
         $validator = $this->validator($request->all());
         if ($validator->fails()) {
             return response()->json([

@@ -3,18 +3,10 @@
     <div class="col-md-6 offset-md-3">
       <div class="card mt-4">
         <div class="card-header">
-          <p>Register</p>
+          <p>Login</p>
         </div>
         <div class="card-body">
-          <form @submit.prevent="register">
-            <div class="form-group">
-              <label for="name">name</label>
-              <input v-model="form.name" id="name" type="text" class="form-control"
-                     :class="{ 'is-invalid': errors.name }" placeholder="Name" />
-              <div class="invalid-feedback" v-if="errors.name">
-                {{ errors.name[0] }}
-              </div>
-            </div>
+          <form @submit.prevent="login">
             <div class="form-group">
               <label for="email">Email</label>
               <input v-model="form.email" id="email" type="email" class="form-control"
@@ -32,7 +24,7 @@
               </div>
             </div>
             <div class="form-group">
-              <input type="submit" value="Register" class="btn btn-outline-info w-100">
+              <input type="submit" value="Login" class="btn btn-outline-info w-100">
             </div>
           </form>
         </div>
@@ -43,24 +35,22 @@
 
 <script>
   export default {
-    name: "register",
+    name: "login",
     data() {
       return {
         form: {
-          name: '',
           email: '',
           password: ''
         }
       }
     },
     methods: {
-      async register() {
-        await this.$axios.post('/auth/register', this.form)
+      async login() {
+        await this.$auth.login({ data: this.form })
         .then(data => {
-          this.$auth.login({ data: this.form });
           this.$router.push({ name: 'index' })
         })
-        .catch(() => {
+        .catch((err) => {
         });
       }
     }

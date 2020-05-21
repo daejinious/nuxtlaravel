@@ -19,6 +19,12 @@ export default {
   ** Customize the progress-bar color
   */
   loading: { color: '#fff' },
+
+  router: {
+    middleware: [
+      'clearValidationErrors'
+    ]
+  },
   /*
   ** Global CSS
   */
@@ -28,6 +34,8 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    './plugins/mixins/validation',
+    './plugins/axios'
   ],
   auth: {
     // Doc: https://auth.nuxtjs.org/guide/scheme.html
@@ -35,13 +43,13 @@ export default {
       local: {
         endpoints: {
           login: {
-            url: 'auth/login', method: 'post', propertyName: 'token'
+            url: '/auth/login', method: 'post', propertyName: 'token'
           },
           user: {
             url: 'me', method: 'get', propertyName: 'data'
           },
           logout: {
-            url: 'logout', method: 'get'
+            url: '/auth/logout', method: 'get'
           },
         }
 
