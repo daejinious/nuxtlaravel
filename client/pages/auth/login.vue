@@ -36,6 +36,7 @@
 <script>
   export default {
     name: "login",
+    middleware: 'guest',
     data() {
       return {
         form: {
@@ -46,11 +47,11 @@
     },
     methods: {
       async login() {
-        await this.$auth.login({ data: this.form })
+        await this.$auth.login({ data: this.form})
         .then(data => {
           this.$router.push({ name: 'index' })
         })
-        .catch((err) => {
+        .catch(() => {
         });
       }
     }

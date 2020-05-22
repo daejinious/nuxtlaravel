@@ -35,21 +35,23 @@ export default {
   */
   plugins: [
     './plugins/mixins/validation',
+    './plugins/mixins/user',
     './plugins/axios'
   ],
   auth: {
     // Doc: https://auth.nuxtjs.org/guide/scheme.html
+    namespace: 'auth',
     strategies: {
       local: {
         endpoints: {
           login: {
-            url: '/auth/login', method: 'post', propertyName: 'token'
+            url: 'auth/login', method: 'post', propertyName: 'token'
           },
           user: {
             url: 'me', method: 'get', propertyName: 'data'
           },
           logout: {
-            url: '/auth/logout', method: 'get'
+            url: 'auth/logout', method: 'get'
           },
         }
 
@@ -59,7 +61,10 @@ export default {
     redirect: {
       login: '/auth/login',
       home: '/',
-    }
+    },
+    plugins: [
+      './plugins/auth'
+    ]
   },
   /*
   ** Nuxt.js dev-modules

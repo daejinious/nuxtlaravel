@@ -44,6 +44,7 @@
 <script>
   export default {
     name: "register",
+    middleware: 'guest',
     data() {
       return {
         form: {
