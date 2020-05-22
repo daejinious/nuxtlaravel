@@ -49,7 +49,7 @@
       async login() {
         await this.$auth.login({ data: this.form})
         .then(data => {
-          this.$router.push({ name: 'index' })
+          this.$router.push(this.$route.query.redirect ? this.$route.query.redirect : '/')
         })
         .catch(() => {
         });
