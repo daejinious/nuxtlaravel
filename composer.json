@@ -16,6 +16,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^1.0",
         "mongodb/mongodb": "^1.6",
+        "socialiteproviders/kakao": "^4.1",
         "tymon/jwt-auth": "^1.0"
     },
     "require-dev": {

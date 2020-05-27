@@ -177,6 +177,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        // a whole bunch of providers
+        \SocialiteProviders\Manager\ServiceProvider::class,
     ],
 
     /*

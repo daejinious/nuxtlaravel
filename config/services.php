@@ -31,24 +31,29 @@ return [
     ],
 
     /* Oauth2 social Login config */
-    'github' => [
-        'client_id' => env('GITHUB_CLIENT_ID'),         // Your GitHub Client ID
-        'client_secret' => env('GITHUB_CLIENT_SECRET'), // Your GitHub Client Secret
-        'redirect' => 'http://your-callback-url',
-    ],
+//    'github' => [
+//        'client_id' => env('GITHUB_CLIENT_ID'),         // Your GitHub Client ID
+//        'client_secret' => env('GITHUB_CLIENT_SECRET'), // Your GitHub Client Secret
+//        'redirect' => 'http://your-callback-url',
+//    ],
     'google' => [
-        'client_id' => env('GITHUB_CLIENT_ID'),         // Your GitHub Client ID
-        'client_secret' => env('GITHUB_CLIENT_SECRET'), // Your GitHub Client Secret
-        'redirect' => 'http://your-callback-url',
+        'client_id' => env('GOOGLE_CLIENT_ID'),         // Your GitHub Client ID
+        'client_secret' => env('GOOGLE_CLIENT_SECRET'), // Your GitHub Client Secret
+        'redirect' => env('GOOGLE_REDIRECT_URL'),
     ],
     'facebook' => [
-        'client_id' => env('GITHUB_CLIENT_ID'),         // Your GitHub Client ID
-        'client_secret' => env('GITHUB_CLIENT_SECRET'), // Your GitHub Client Secret
-        'redirect' => 'http://your-callback-url',
+        'client_id' => env('FACEBOOK_CLIENT_ID'),         // Your GitHub Client ID
+        'client_secret' => env('FACEBOOK_CLIENT_SECRET'), // Your GitHub Client Secret
+        'redirect' => env('FACEBOOK_REDIRECT_URL'),
     ],
-    'twitter' => [
-        'client_id' => env('GITHUB_CLIENT_ID'),         // Your GitHub Client ID
-        'client_secret' => env('GITHUB_CLIENT_SECRET'), // Your GitHub Client Secret
-        'redirect' => 'http://your-callback-url',
+    'kakao' => [
+        'client_id' => env('KAKAO_CLIENT_ID'),
+        'client_secret' => env('KAKAO_CLIENT_SECRET'),
+        'redirect' => env('KAKAO_REDIRECT_URL'),
     ],
+//    'twitter' => [
+//        'client_id' => env('GITHUB_CLIENT_ID'),         // Your GitHub Client ID
+//        'client_secret' => env('GITHUB_CLIENT_SECRET'), // Your GitHub Client Secret
+//        'redirect' => 'http://your-callback-url',
+//    ],
 ];
