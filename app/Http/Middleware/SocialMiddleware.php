@@ -20,13 +20,13 @@ class SocialMiddleware
         $services = explode(',', env('SOCIAL_LIST'));
         $enabledServices = [];
         foreach ($services as $service) {
-            if (config('services' . $service)) {
-                Log::info(config('services' . $service));
+            if (config('services.' . $service)) {
+                Log::info(config('services.' . $service));
                 $enabledServices[] = $service;
             }
         }
 
-        if (!in_array(strtolower($request->get('service')), $enabledServices)) {
+        if (!in_array(strtolower($request->service), $enabledServices)) {
             if ($request->expectsJson()) {
                 return response()->json([
                     'success' => false,
@@ -34,7 +34,7 @@ class SocialMiddleware
                 ], 403);
             }
 
-            return redirect()->back();
+            return redirect(env('CLIENT_BASE_URL') . '/auth/login');
         }
 
         return $next($request);

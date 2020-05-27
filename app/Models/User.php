@@ -49,4 +49,14 @@ class User extends Authenticatable implements JWTSubject
         // TODO: Implement getJWTCustomClaims() method.
         return [];
     }
+
+    public function social()
+    {
+        return $this->hasMany('App\Models\UserSocial', 'user_id', 'id');
+    }
+
+    public function hasSocialLinked($service)
+    {
+        return (bool) $this->social->where('service', $service)->count();
+    }
 }
